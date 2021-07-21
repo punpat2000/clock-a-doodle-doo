@@ -1,7 +1,7 @@
 name: Lint checking for backend 🐤
 
 on:
-  merge:
+  push:
     branches:
       - master
 
