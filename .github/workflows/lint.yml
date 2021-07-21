@@ -1,4 +1,4 @@
-name: Lint checking for backend 🐤
+name: Lint checking🐤
 
 on:
   push:
