@@ -1,0 +1,34 @@
+name: Lint checking for backend 🐤
+
+on:
+  merge:
+    branches:
+      - master
+
+jobs:
+  lint-frontend:
+    runs-on: ubuntu-latest
+    name: Lint all code 🩺
+    steps:
+      - name: Checkout 🔎
+        uses: actions/checkout@v2
+
+      - name: Cache 💵
+        id: cache-node-modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-${{ env.cache-name }}-
+            ${{ runner.OS }}-build-
+            ${{ runner.OS }}-
+
+      - name: Install modules 🕓
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: yarn add --no-lockfile eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser @vue/cli-plugin-eslint eslint-plugin-prettier eslint-plugin-vue prettier @vue/eslint-config-prettier @vue/eslint-config-typescript
+
+      - name: Run lint 💖
+        run: yarn lint
+

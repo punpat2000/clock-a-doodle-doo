@@ -1,6 +1,7 @@
 body {
   text-align: center;
   background-color: #f8f8fa;
+  overflow: hidden;
 }
 
 .vertical-center {
