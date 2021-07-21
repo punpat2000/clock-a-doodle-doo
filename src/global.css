@@ -1,0 +1,12 @@
+body {
+  text-align: center;
+  background-color: #f8f8fa;
+}
+
+.vertical-center {
+  height: 100vh;
+}
+
+.clickable {
+  cursor: pointer;
+}
