@@ -1,6 +1,10 @@
+:root {
+  --background-color: #f8f8fa;
+}
+
 body {
   text-align: center;
-  background-color: #f8f8fa;
+  background-color: var(--background-color);
   overflow: hidden;
 }
 
