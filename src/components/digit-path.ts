@@ -1,3 +1,42 @@
+export enum Sticks {
+  BOTTOM,
+  BOTTOM_LEFT,
+  BOTTOM_RIGHT,
+  MIDDLE,
+  TOP,
+  TOP_LEFT,
+  TOP_RIGHT,
+}
+
+export const PERIOD_INDEX = 14;
+export const FIRST_DIGIT_INDEX = 0;
+export const SECOND_DIGIT_INDEX = 7;
+export const THIRD_DIGIT_INDEX = 15;
+export const FOURTH_DIGIT_INDEX = 22;
+
+// element to be omitted
+export const DIGIT_ELEMENT: Sticks[][] = [
+  // 0 does not have the middle element
+  [Sticks.MIDDLE],
+  [
+    Sticks.BOTTOM,
+    Sticks.MIDDLE,
+    Sticks.TOP,
+    Sticks.BOTTOM_LEFT,
+    Sticks.TOP_LEFT,
+  ],
+  [Sticks.TOP_LEFT, Sticks.BOTTOM_RIGHT],
+  [Sticks.BOTTOM_LEFT, Sticks.TOP_LEFT],
+  [Sticks.TOP, Sticks.BOTTOM, Sticks.BOTTOM_LEFT],
+  [Sticks.TOP_RIGHT, Sticks.BOTTOM_LEFT],
+  // 6
+  [Sticks.TOP_RIGHT],
+  [Sticks.TOP_LEFT, Sticks.BOTTOM_LEFT, Sticks.BOTTOM, Sticks.MIDDLE],
+  // 8
+  [],
+  [Sticks.BOTTOM_LEFT],
+];
+
 export const LEFT_FULL_PATH = [
   'M341.148 569.448L351.036 559.08H374.748L384.06 569.448H341.148Z',
   'M338.268 522.312L348.636 532.296V555.816L338.268 565.224V522.312Z',
@@ -92,43 +131,4 @@ export const RIGHT_FULL_PATH = [
   'M1534.96 471.912H1577.87L1568.37 482.28H1544.85L1534.96 471.912Z',
   'M1531.89 518.952V476.04L1542.25 485.352V509.16L1531.89 518.952Z',
   'M1580.75 476.04V518.952L1570.38 509.64V485.928L1580.75 476.04Z',
-];
-
-export const PERIOD_INDEX = 14;
-export const FIRST_DIGIT_INDEX = 0;
-export const SECOND_DIGIT_INDEX = 7;
-export const THIRD_DIGIT_INDEX = 15;
-export const FOURTH_DIGIT_INDEX = 22;
-
-export enum Sticks {
-  BOTTOM,
-  BOTTOM_LEFT,
-  BOTTOM_RIGHT,
-  MIDDLE,
-  TOP,
-  TOP_LEFT,
-  TOP_RIGHT,
-}
-
-// element to be omitted
-export const DIGIT_ELEMENT: Sticks[][] = [
-  // 0 does not have the middle element
-  [Sticks.MIDDLE],
-  [
-    Sticks.BOTTOM,
-    Sticks.MIDDLE,
-    Sticks.TOP,
-    Sticks.BOTTOM_LEFT,
-    Sticks.TOP_LEFT,
-  ],
-  [Sticks.TOP_LEFT, Sticks.BOTTOM_RIGHT],
-  [Sticks.BOTTOM_LEFT, Sticks.TOP_LEFT],
-  [Sticks.TOP, Sticks.BOTTOM, Sticks.BOTTOM_LEFT],
-  [Sticks.TOP_RIGHT, Sticks.BOTTOM_LEFT],
-  // 6
-  [Sticks.TOP_RIGHT],
-  [Sticks.TOP_LEFT, Sticks.BOTTOM_LEFT, Sticks.BOTTOM, Sticks.MIDDLE],
-  // 8
-  [],
-  [Sticks.BOTTOM_LEFT],
 ];
