@@ -34,12 +34,7 @@
           fill="#B87FEC"
         />
       </g>
-      <g
-        class="clickable"
-        @click="onClick"
-        @mouseenter="onMouseEnter"
-        @mouseleave="onMouseLeave"
-      >
+      <g class="clickable" @click="onClick">
         <g filter="url(#filter2_d)">
           <rect
             x="685"
@@ -133,7 +128,10 @@
           stroke-width="7"
         />
       </g>
-      <g filter="url(#filter5_d)">
+      <g filter="url(#filter5_d)" @click="test">
+        <foreignObject display="none">
+          <!-- <input type="number" ref="input3Ref" v-model="input3" /> -->
+        </foreignObject>
         <circle cx="1437" cy="534" r="200" fill="white" />
         <circle cx="1437" cy="534" r="198" stroke="#B87FEC" stroke-width="4" />
       </g>
@@ -552,14 +550,29 @@ import { Vue } from 'vue-class-component';
 import { Button } from './models';
 import { startBtn, stopBtn } from './presets';
 import { Digits, NumberOptions } from './digits';
+import { Ref } from 'vue-property-decorator';
 
 export default class Clock extends Vue {
-  private isRunning = false;
-  private isHovered = false;
   mainBtn: Button = { ...startBtn };
-  leftDigit = new Digits(NumberOptions.LEFT, 25, 99);
-  middleDigit = new Digits(NumberOptions.MIDDLE, 25, 99);
-  rightDigit = new Digits(NumberOptions.RIGHT, 25, 99);
+  leftDigit = new Digits(NumberOptions.LEFT);
+  middleDigit = new Digits(NumberOptions.MIDDLE);
+  rightDigit = new Digits(NumberOptions.RIGHT);
+  private readonly _queue = [this.leftDigit, this.middleDigit, this.rightDigit];
+  private current = 0;
+  private isRunning = false;
+  // private isHovered = false;
+  input3 = '';
+  @Ref('input3Ref') readonly input3Ref!: HTMLInputElement;
+
+  test(): void {
+    // this.input3.focus();
+    console.log(this.input3);
+    this.input3Ref.focus();
+  }
+
+  get isAllUp(): boolean {
+    return this._queue.every((timer) => timer.isUp);
+  }
 
   private applyStart(): void {
     this.mainBtn = { ...startBtn };
@@ -569,35 +582,57 @@ export default class Clock extends Vue {
     this.mainBtn = { ...stopBtn };
   }
 
+  private next(): void {
+    if (this.isAllUp) {
+      return;
+    }
+    if (this.current === this._queue.length - 1) {
+      this.current = 0;
+    } else {
+      this.current++;
+    }
+    if (this._queue[this.current].isUp) {
+      this.next();
+    }
+  }
+
+  private start(): void {
+    this._queue[this.current].start();
+  }
+
+  private pause(): void {
+    this._queue[this.current].pause();
+    this.next();
+  }
+
   onClick(): void {
-    this.leftDigit.start();
-    this.rightDigit.start();
-    this.middleDigit.start();
     if (this.isRunning) {
       this.applyStart();
       this.isRunning = false;
+      this.pause();
     } else {
       this.applyStop();
       this.isRunning = true;
+      this.start();
     }
 
-    if (this.isHovered) {
-      this.onMouseEnter();
-    }
+    // if (this.isHovered) {
+    //   this.onMouseEnter();
+    // }
   }
 
-  onMouseEnter(): void {
-    this.mainBtn.color = this.mainBtn.hoverColor;
-    this.isHovered = true;
-  }
+  // onMouseEnter(): void {
+  //   this.mainBtn.color = this.mainBtn.hoverColor;
+  //   this.isHovered = true;
+  // }
 
-  onMouseLeave(): void {
-    if (this.isRunning) {
-      this.applyStop();
-    } else {
-      this.applyStart();
-    }
-    this.isHovered = false;
-  }
+  // onMouseLeave(): void {
+  //   if (this.isRunning) {
+  //     this.applyStop();
+  //   } else {
+  //     this.applyStart();
+  //   }
+  //   this.isHovered = false;
+  // }
 }
 </script>

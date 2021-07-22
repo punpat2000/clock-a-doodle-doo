@@ -1,10 +1,13 @@
 import * as Path from './digit-path';
 
 export class Digits {
+  private _centiSecond = 99;
   private _minute!: number;
   private _second!: number;
   private _fullPath: string[];
   private _path!: string;
+  private _timerId: number | undefined;
+  isUp = false;
 
   constructor(option: NumberOptions, minute = 25, second = 0) {
     switch (option) {
@@ -27,15 +30,40 @@ export class Digits {
   }
 
   start(): void {
-    console.log('start invoked');
-    setInterval(() => {
-      this.second = this._second - 1;
-      console.log(this._second);
-    }, 1000);
+    if (!this._timerId) {
+      this._timerId = setInterval(this.decrement.bind(this), 10);
+    }
+  }
+
+  pause(): void {
+    if (this._timerId) {
+      clearInterval(this._timerId);
+      this._timerId = undefined;
+    }
   }
 
   get path(): string {
     return this._path;
+  }
+
+  decrement(): void {
+    if (this._centiSecond !== 0) {
+      this._centiSecond--;
+      return;
+    }
+    if (this._second !== 0) {
+      this._second--;
+      this._centiSecond = 99;
+    } else if (this._minute !== 0) {
+      this._minute--;
+      this._second = 59;
+      this._centiSecond = 99;
+    } else {
+      this.pause();
+      this.isUp = true;
+      return;
+    }
+    this.updatePath();
   }
 
   set minute(num: number) {
