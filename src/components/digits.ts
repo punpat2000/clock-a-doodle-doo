@@ -2,14 +2,21 @@ import * as Path from './digit-path';
 
 export class Digits {
   private _centiSecond = 99;
-  private _minute!: number;
-  private _second!: number;
+  private _initialMinute: number;
+  private _initialSecond: number;
+  private _minute: number;
+  private _second: number;
   private _fullPath: string[];
   private _path!: string;
   private _timerId: number | undefined;
   isUp = false;
 
-  constructor(option: NumberOptions, minute = 25, second = 0) {
+  constructor(
+    private forcePause: () => void,
+    option: NumberOptions,
+    minute = 25,
+    second = 0
+  ) {
     switch (option) {
       case NumberOptions.LEFT: {
         this._fullPath = [...Path.LEFT_FULL_PATH];
@@ -24,8 +31,16 @@ export class Digits {
         break;
       }
     }
-    this._minute = minute;
-    this._second = second;
+    this._minute = this._initialMinute = minute;
+    this._second = this._initialSecond = second;
+    this.updatePath();
+  }
+
+  reset(): void {
+    this.isUp = false;
+    this._centiSecond = 99;
+    this._minute = this._initialMinute;
+    this._second = this._initialSecond;
     this.updatePath();
   }
 
@@ -61,6 +76,7 @@ export class Digits {
     } else {
       this.pause();
       this.isUp = true;
+      this.forcePause();
       return;
     }
     this.updatePath();

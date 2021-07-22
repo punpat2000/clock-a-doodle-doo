@@ -62,141 +62,140 @@
           />
         </g>
       </g>
-      <path
-        d="M1406 185H1467V221H1406V185Z"
-        v-bind:fill="theme.major"
-        v-bind:stroke="theme.minor"
-        stroke-width="4"
-      />
-      <rect
-        x="929"
-        y="185"
-        width="61"
-        height="36"
-        v-bind:fill="theme.major"
-        v-bind:stroke="theme.minor"
-        stroke-width="4"
-      />
-      <rect
-        x="452"
-        y="185"
-        width="61"
-        height="36"
-        v-bind:fill="theme.major"
-        v-bind:stroke="theme.minor"
-        stroke-width="4"
-      />
-      <rect
-        x="1374"
-        y="215"
-        width="125"
-        height="60"
-        v-bind:fill="theme.major"
-        v-bind:stroke="theme.minor"
-        stroke-width="4"
-      />
-      <rect
-        x="897"
-        y="215"
-        width="125"
-        height="60"
-        v-bind:fill="theme.major"
-        v-bind:stroke="theme.minor"
-        stroke-width="4"
-      />
-      <rect
-        x="420"
-        y="215"
-        width="125"
-        height="60"
-        v-bind:fill="theme.major"
-        v-bind:stroke="theme.minor"
-        stroke-width="4"
-      />
-      <g filter="url(#filter4_d)">
+      <g clock>
+        <path
+          d="M1406 185H1467V221H1406V185Z"
+          v-bind:fill="theme.major"
+          v-bind:stroke="theme.minor"
+          stroke-width="4"
+        />
         <rect
-          x="177"
-          y="269"
-          width="1566"
-          height="530"
-          rx="127"
+          x="929"
+          y="185"
+          width="61"
+          height="36"
+          v-bind:fill="theme.major"
+          v-bind:stroke="theme.minor"
+          stroke-width="4"
+        />
+        <rect
+          x="452"
+          y="185"
+          width="61"
+          height="36"
+          v-bind:fill="theme.major"
+          v-bind:stroke="theme.minor"
+          stroke-width="4"
+        />
+        <rect
+          x="1374"
+          y="215"
+          width="125"
+          height="60"
+          v-bind:fill="theme.major"
+          v-bind:stroke="theme.minor"
+          stroke-width="4"
+        />
+        <rect
+          x="897"
+          y="215"
+          width="125"
+          height="60"
+          v-bind:fill="theme.major"
+          v-bind:stroke="theme.minor"
+          stroke-width="4"
+        />
+        <rect
+          x="420"
+          y="215"
+          width="125"
+          height="60"
+          v-bind:fill="theme.major"
+          v-bind:stroke="theme.minor"
+          stroke-width="4"
+        />
+        <g filter="url(#filter4_d)">
+          <rect
+            x="177"
+            y="269"
+            width="1566"
+            height="530"
+            rx="127"
+            v-bind:fill="theme.major"
+          />
+          <rect
+            x="180.5"
+            y="272.5"
+            width="1559"
+            height="523"
+            rx="123.5"
+            v-bind:stroke="theme.minor"
+            stroke-width="7"
+          />
+        </g>
+        <g filter="url(#filter5_d)">
+          <circle cx="1437" cy="534" r="200" v-bind:fill="theme.base" />
+          <circle
+            cx="1437"
+            cy="534"
+            r="198"
+            v-bind:stroke="theme.minor"
+            stroke-width="4"
+          />
+        </g>
+        <g filter="url(#filter6_d)">
+          <circle cx="960" cy="534" r="200" v-bind:fill="theme.base" />
+          <circle
+            cx="960"
+            cy="534"
+            r="198"
+            v-bind:stroke="theme.minor"
+            stroke-width="4"
+          />
+        </g>
+        <g filter="url(#filter7_d)">
+          <circle cx="483" cy="534" r="200" v-bind:fill="theme.base" />
+          <circle
+            cx="483"
+            cy="534"
+            r="198"
+            v-bind:stroke="theme.minor"
+            stroke-width="4"
+          />
+        </g>
+        <path
+          d="M1478.58 638.439C1479.37 638.672 1480.21 638.217 1480.44 637.422L1484.24 624.467C1484.47 623.672 1484.01 622.839 1483.22 622.606C1482.42 622.373 1481.59 622.828 1481.36 623.623L1477.98 635.139L1466.47 631.763C1465.67 631.53 1464.84 631.986 1464.61 632.781C1464.37 633.576 1464.83 634.409 1465.62 634.642L1478.58 638.439ZM1436.68 562.72L1477.68 637.72L1480.32 636.28L1439.32 561.28L1436.68 562.72Z"
           v-bind:fill="theme.major"
         />
-        <rect
-          x="180.5"
-          y="272.5"
-          width="1559"
-          height="523"
-          rx="123.5"
-          v-bind:stroke="theme.minor"
-          stroke-width="7"
+        <path
+          d="M1438.06 396.939C1437.47 396.354 1436.53 396.354 1435.94 396.939L1426.39 406.485C1425.81 407.071 1425.81 408.021 1426.39 408.607C1426.98 409.192 1427.93 409.192 1428.51 408.607L1437 400.121L1445.49 408.607C1446.07 409.192 1447.02 409.192 1447.61 408.607C1448.19 408.021 1448.19 407.071 1447.61 406.485L1438.06 396.939ZM1438.5 562V398H1435.5V562H1438.5Z"
+          v-bind:fill="theme.major"
         />
-      </g>
-      <g filter="url(#filter5_d)" @click="test">
-        <!-- <foreignObject display="none">
-          <input type="number" ref="input3Ref" v-model="input3" />
-        </foreignObject> -->
-        <circle cx="1437" cy="534" r="200" v-bind:fill="theme.base" />
-        <circle
-          cx="1437"
-          cy="534"
-          r="198"
-          v-bind:stroke="theme.minor"
-          stroke-width="4"
+        <path
+          d="M1001.58 635.439C1002.37 635.672 1003.21 635.217 1003.44 634.422L1007.24 621.467C1007.47 620.672 1007.01 619.839 1006.22 619.606C1005.42 619.373 1004.59 619.828 1004.36 620.623L1000.98 632.139L989.467 628.763C988.672 628.53 987.839 628.986 987.606 629.781C987.373 630.576 987.828 631.409 988.623 631.642L1001.58 635.439ZM959.684 559.72L1000.68 634.72L1003.32 633.28L962.316 558.28L959.684 559.72Z"
+          v-bind:fill="theme.major"
         />
-      </g>
-      <g filter="url(#filter6_d)">
-        <circle cx="960" cy="534" r="200" v-bind:fill="theme.base" />
-        <circle
-          cx="960"
-          cy="534"
-          r="198"
-          v-bind:stroke="theme.minor"
-          stroke-width="4"
+        <path
+          d="M961.061 393.939C960.475 393.354 959.525 393.354 958.939 393.939L949.393 403.485C948.808 404.071 948.808 405.021 949.393 405.607C949.979 406.192 950.929 406.192 951.515 405.607L960 397.121L968.485 405.607C969.071 406.192 970.021 406.192 970.607 405.607C971.192 405.021 971.192 404.071 970.607 403.485L961.061 393.939ZM961.5 559V395H958.5V559H961.5Z"
+          v-bind:fill="theme.major"
         />
-      </g>
-      <g filter="url(#filter7_d)">
-        <circle cx="483" cy="534" r="200" v-bind:fill="theme.base" />
-        <circle
-          cx="483"
-          cy="534"
-          r="198"
-          v-bind:stroke="theme.minor"
-          stroke-width="4"
+        <path
+          d="M524.578 635.439C525.373 635.672 526.206 635.217 526.439 634.422L530.237 621.467C530.47 620.672 530.014 619.839 529.219 619.606C528.424 619.373 527.591 619.828 527.358 620.623L523.982 632.139L512.467 628.763C511.672 628.53 510.839 628.986 510.606 629.781C510.373 630.576 510.828 631.409 511.623 631.642L524.578 635.439ZM482.684 559.72L523.684 634.72L526.316 633.28L485.316 558.28L482.684 559.72Z"
+          v-bind:fill="theme.major"
         />
-      </g>
-      <path
-        d="M1478.58 638.439C1479.37 638.672 1480.21 638.217 1480.44 637.422L1484.24 624.467C1484.47 623.672 1484.01 622.839 1483.22 622.606C1482.42 622.373 1481.59 622.828 1481.36 623.623L1477.98 635.139L1466.47 631.763C1465.67 631.53 1464.84 631.986 1464.61 632.781C1464.37 633.576 1464.83 634.409 1465.62 634.642L1478.58 638.439ZM1436.68 562.72L1477.68 637.72L1480.32 636.28L1439.32 561.28L1436.68 562.72Z"
-        v-bind:fill="theme.major"
-      />
-      <path
-        d="M1438.06 396.939C1437.47 396.354 1436.53 396.354 1435.94 396.939L1426.39 406.485C1425.81 407.071 1425.81 408.021 1426.39 408.607C1426.98 409.192 1427.93 409.192 1428.51 408.607L1437 400.121L1445.49 408.607C1446.07 409.192 1447.02 409.192 1447.61 408.607C1448.19 408.021 1448.19 407.071 1447.61 406.485L1438.06 396.939ZM1438.5 562V398H1435.5V562H1438.5Z"
-        v-bind:fill="theme.major"
-      />
-      <path
-        d="M1001.58 635.439C1002.37 635.672 1003.21 635.217 1003.44 634.422L1007.24 621.467C1007.47 620.672 1007.01 619.839 1006.22 619.606C1005.42 619.373 1004.59 619.828 1004.36 620.623L1000.98 632.139L989.467 628.763C988.672 628.53 987.839 628.986 987.606 629.781C987.373 630.576 987.828 631.409 988.623 631.642L1001.58 635.439ZM959.684 559.72L1000.68 634.72L1003.32 633.28L962.316 558.28L959.684 559.72Z"
-        v-bind:fill="theme.major"
-      />
-      <path
-        d="M961.061 393.939C960.475 393.354 959.525 393.354 958.939 393.939L949.393 403.485C948.808 404.071 948.808 405.021 949.393 405.607C949.979 406.192 950.929 406.192 951.515 405.607L960 397.121L968.485 405.607C969.071 406.192 970.021 406.192 970.607 405.607C971.192 405.021 971.192 404.071 970.607 403.485L961.061 393.939ZM961.5 559V395H958.5V559H961.5Z"
-        v-bind:fill="theme.major"
-      />
-      <path
-        d="M524.578 635.439C525.373 635.672 526.206 635.217 526.439 634.422L530.237 621.467C530.47 620.672 530.014 619.839 529.219 619.606C528.424 619.373 527.591 619.828 527.358 620.623L523.982 632.139L512.467 628.763C511.672 628.53 510.839 628.986 510.606 629.781C510.373 630.576 510.828 631.409 511.623 631.642L524.578 635.439ZM482.684 559.72L523.684 634.72L526.316 633.28L485.316 558.28L482.684 559.72Z"
-        v-bind:fill="theme.major"
-      />
-      <path
-        d="M484.061 393.939C483.475 393.354 482.525 393.354 481.939 393.939L472.393 403.485C471.808 404.071 471.808 405.021 472.393 405.607C472.979 406.192 473.929 406.192 474.515 405.607L483 397.121L491.485 405.607C492.071 406.192 493.021 406.192 493.607 405.607C494.192 405.021 494.192 404.071 493.607 403.485L484.061 393.939ZM484.5 559V395H481.5V559H484.5Z"
-        v-bind:fill="theme.major"
-      />
-      <g filter="url(#filter8_d)">
-        <path v-bind:d="rightDigit.path" v-bind:fill="theme.minor" />
-      </g>
-      <g filter="url(#filter9_d)">
-        <path v-bind:d="middleDigit.path" v-bind:fill="theme.minor" />
-      </g>
-      <g filter="url(#filter10_d)">
-        <path v-bind:d="leftDigit.path" v-bind:fill="theme.minor" />
+        <path
+          d="M484.061 393.939C483.475 393.354 482.525 393.354 481.939 393.939L472.393 403.485C471.808 404.071 471.808 405.021 472.393 405.607C472.979 406.192 473.929 406.192 474.515 405.607L483 397.121L491.485 405.607C492.071 406.192 493.021 406.192 493.607 405.607C494.192 405.021 494.192 404.071 493.607 403.485L484.061 393.939ZM484.5 559V395H481.5V559H484.5Z"
+          v-bind:fill="theme.major"
+        />
+        <g filter="url(#filter8_d)">
+          <path v-bind:d="rightDigit.path" v-bind:fill="theme.minor" />
+        </g>
+        <g filter="url(#filter9_d)">
+          <path v-bind:d="middleDigit.path" v-bind:fill="theme.minor" />
+        </g>
+        <g filter="url(#filter10_d)">
+          <path v-bind:d="leftDigit.path" v-bind:fill="theme.minor" />
+        </g>
       </g>
       <g class="clickable" v-if="settingsClicked">
         <g filter="url(#filter11_d)" @click="onClickSettings">
@@ -291,7 +290,7 @@
             v-bind:fill="theme.minor"
           />
         </g>
-        <g filter="url(#filter19_d)">
+        <g filter="url(#filter19_d)" @click="reset">
           <rect
             x="1578"
             y="153"
@@ -1034,21 +1033,12 @@ export default class Clock extends Vue {
   theme = Theme.lavender;
   settingsClicked = false;
   isRunning = false;
-  leftDigit = new Digits(NumberOptions.LEFT);
-  middleDigit = new Digits(NumberOptions.MIDDLE);
-  rightDigit = new Digits(NumberOptions.RIGHT);
+  leftDigit = new Digits(this.forcePause.bind(this), NumberOptions.LEFT);
+  middleDigit = new Digits(this.forcePause.bind(this), NumberOptions.MIDDLE);
+  rightDigit = new Digits(this.forcePause.bind(this), NumberOptions.RIGHT);
   mainBtn = START_PATH;
   private readonly queue = [this.leftDigit, this.middleDigit, this.rightDigit];
   private current = 0;
-  // private isHovered = false;
-  // input3 = '';
-  // @Ref('input3Ref') readonly input3Ref!: HTMLInputElement;
-
-  // test(): void {
-  // this.input3.focus();
-  //   console.log(this.input3);
-  //   this.input3Ref.focus();
-  // }
 
   get isAllUp(): boolean {
     return this.queue.every((timer) => timer.isUp);
@@ -1069,7 +1059,26 @@ export default class Clock extends Vue {
   }
 
   private start(): void {
+    if (this.isAllUp) {
+      this.pause();
+      this.queue.forEach((timer) => timer.reset());
+      this.current = 0;
+    }
     this.queue[this.current].start();
+  }
+
+  private reset(): void {
+    this.mainBtn = START_PATH;
+    this.isRunning = false;
+    this.pause();
+    this.queue.forEach((timer) => timer.reset());
+    this.current = 0;
+  }
+
+  private forcePause(): void {
+    this.mainBtn = START_PATH;
+    this.isRunning = false;
+    this.pause();
   }
 
   private pause(): void {
@@ -1091,28 +1100,10 @@ export default class Clock extends Vue {
       this.isRunning = true;
       this.start();
     }
-
-    // if (this.isHovered) {
-    //   this.onMouseEnter();
-    // }
   }
 
   onClickSettings(): void {
     this.settingsClicked = !this.settingsClicked;
   }
-
-  // onMouseEnter(): void {
-  //   this.mainBtn1.color = this.mainBtn1.hoverColor;
-  //   this.isHovered = true;
-  // }
-
-  // onMouseLeave(): void {
-  //   if (this.isRunning) {
-  //     this.applyStop();
-  //   } else {
-  //     this.applyStart();
-  //   }
-  //   this.isHovered = false;
-  // }
 }
 </script>
