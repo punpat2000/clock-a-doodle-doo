@@ -1,6 +1,7 @@
 import * as Path from './digit-path';
+import { ClockModel } from './models';
 
-export class Digits {
+export class Timer {
   private _centiSecond = 99;
   private _initialMinute: number;
   private _initialSecond: number;
@@ -12,21 +13,21 @@ export class Digits {
   isUp = false;
 
   constructor(
-    private forcePause: () => void,
-    option: NumberOptions,
+    private forcePause: ClockModel['forcePause'],
+    option: TimerOptions,
     minute = 25,
     second = 0
   ) {
     switch (option) {
-      case NumberOptions.LEFT: {
+      case TimerOptions.LEFT: {
         this._fullPath = [...Path.LEFT_FULL_PATH];
         break;
       }
-      case NumberOptions.MIDDLE: {
+      case TimerOptions.MIDDLE: {
         this._fullPath = [...Path.MIDDLE_FULL_PATH];
         break;
       }
-      case NumberOptions.RIGHT: {
+      case TimerOptions.RIGHT: {
         this._fullPath = [...Path.RIGHT_FULL_PATH];
         break;
       }
@@ -34,6 +35,21 @@ export class Digits {
     this._minute = this._initialMinute = minute;
     this._second = this._initialSecond = second;
     this.updatePath();
+  }
+
+  static createTripleTimer(clock: ClockModel): [Timer, Timer, Timer] {
+    return [
+      new Timer(clock.forcePause.bind(clock), TimerOptions.LEFT),
+      new Timer(clock.forcePause.bind(clock), TimerOptions.MIDDLE),
+      new Timer(clock.forcePause.bind(clock), TimerOptions.RIGHT),
+    ];
+  }
+
+  static createDoubleTimer(clock: ClockModel): [Timer, Timer] {
+    return [
+      new Timer(clock.forcePause.bind(clock), TimerOptions.LEFT),
+      new Timer(clock.forcePause.bind(clock), TimerOptions.RIGHT),
+    ];
   }
 
   reset(): void {
@@ -123,7 +139,7 @@ export class Digits {
   }
 }
 
-export enum NumberOptions {
+export enum TimerOptions {
   LEFT,
   MIDDLE,
   RIGHT,

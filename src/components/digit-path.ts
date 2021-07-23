@@ -1,4 +1,10 @@
-export enum Sticks {
+export const PERIOD_INDEX = 14;
+export const FIRST_DIGIT_INDEX = 0;
+export const SECOND_DIGIT_INDEX = 7;
+export const THIRD_DIGIT_INDEX = 15;
+export const FOURTH_DIGIT_INDEX = 22;
+
+enum Sticks {
   BOTTOM,
   BOTTOM_LEFT,
   BOTTOM_RIGHT,
@@ -7,12 +13,6 @@ export enum Sticks {
   TOP_LEFT,
   TOP_RIGHT,
 }
-
-export const PERIOD_INDEX = 14;
-export const FIRST_DIGIT_INDEX = 0;
-export const SECOND_DIGIT_INDEX = 7;
-export const THIRD_DIGIT_INDEX = 15;
-export const FOURTH_DIGIT_INDEX = 22;
 
 // element to be omitted
 export const DIGIT_ELEMENT: Sticks[][] = [
