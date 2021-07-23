@@ -23,4 +23,4 @@ jobs:
         run: docker build -t punpat2000/clock-a-doodle-doo .
 
       - name: Push to Docker Hub ☁️
-        run: docker push
+        run: docker push punpat2000/clock-a-doodle-doo
