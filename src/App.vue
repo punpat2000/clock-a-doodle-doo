@@ -1,5 +1,5 @@
 <template>
-  <Clock :initialTime="10"></Clock>
+  <Clock></Clock>
 </template>
 
 <script lang="ts">

@@ -1074,11 +1074,7 @@ export default class Clock extends Vue implements ClockModel {
       this.resetCurrent();
       return;
     }
-    if (this.current === this.queue.length - 1) {
-      this.resetCurrent();
-    } else {
-      this.current++;
-    }
+    this.current = ++this.current % this.queue.length;
     if (this.currentTimer.isUp) {
       this.next();
     }
