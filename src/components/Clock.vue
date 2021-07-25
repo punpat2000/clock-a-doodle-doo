@@ -1046,7 +1046,7 @@ export default class Clock extends Vue implements ClockModel {
   readonly leftTimer = this.queue[0];
   readonly middleTimer = this.queue[1];
   readonly rightTimer = this.queue[2];
-  theme = Theme.lavender;
+  theme = Theme.ThemePicker.pick(Theme.lavender);
   settingsClicked = false;
   isRunning = false;
   mainBtn = START_PATH;
@@ -1110,7 +1110,7 @@ export default class Clock extends Vue implements ClockModel {
   }
 
   onClickColorChange(): void {
-    this.theme = Theme.pickTheme.pick();
+    this.theme = Theme.ThemePicker.pickOne();
   }
 
   onClick(): void {

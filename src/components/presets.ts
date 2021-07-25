@@ -95,8 +95,8 @@ export const random: Theme = {
   background: randomColor(),
 };
 
-export class pickTheme {
-  private static themeList = [
+export class ThemePicker {
+  private static readonly THEME_LIST = [
     lavender,
     mint,
     orange,
@@ -111,10 +111,10 @@ export class pickTheme {
     nebula,
     random,
   ];
-  private static current = 1;
+  private static current = 0;
 
-  static pick(): Theme {
-    const pickedTheme = this.themeList[this.current];
+  static pickOne(): Theme {
+    const pickedTheme = this.THEME_LIST[this.current];
     this.next();
     document.documentElement.style.setProperty(
       '--background-color',
@@ -123,11 +123,19 @@ export class pickTheme {
     return pickedTheme;
   }
 
-  private static next(): void {
-    if (this.current === this.themeList.length - 1) {
-      this.current = 0;
-    } else {
-      this.current++;
+  static pick(theme: Theme): Theme {
+    document.documentElement.style.setProperty(
+      '--background-color',
+      theme.background
+    );
+    if (this.THEME_LIST.includes(theme)) {
+      this.current = this.THEME_LIST.indexOf(theme);
+      this.next();
     }
+    return theme;
+  }
+
+  private static next(): void {
+    this.current = ++this.current % this.THEME_LIST.length;
   }
 }
