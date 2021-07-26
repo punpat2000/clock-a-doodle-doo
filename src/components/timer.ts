@@ -2,7 +2,7 @@ import * as Path from './digit-path';
 import { ClockModel } from './models';
 
 export class Timer {
-  private _centiSecond = 99;
+  private _centiSecond = 0;
   private _initialMinute: number;
   private _initialSecond: number;
   private _minute: number;
@@ -54,7 +54,7 @@ export class Timer {
 
   reset(): void {
     this.isUp = false;
-    this._centiSecond = 99;
+    this._centiSecond = 0;
     this._minute = this._initialMinute;
     this._second = this._initialSecond;
     this.updatePath();
