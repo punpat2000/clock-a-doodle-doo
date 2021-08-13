@@ -1,5 +1,6 @@
 import * as Path from './digit-path';
 import { ClockModel } from './models';
+import * as workerInterval from 'worker-interval';
 
 export class Timer {
   private _centiSecond = 0;
@@ -9,7 +10,7 @@ export class Timer {
   private _second: number;
   private _fullPath: string[];
   private _path!: string;
-  private _timerId: number | undefined;
+  private _timerId?: string | null;
   isUp = false;
 
   constructor(
@@ -62,13 +63,13 @@ export class Timer {
 
   start(): void {
     if (!this._timerId) {
-      this._timerId = setInterval(this.decrement.bind(this), 10);
+      this._timerId = workerInterval.setInterval(this.decrement.bind(this), 10);
     }
   }
 
   pause(): void {
     if (this._timerId) {
-      clearInterval(this._timerId);
+      workerInterval.clearInterval(this._timerId);
       this._timerId = undefined;
     }
   }
