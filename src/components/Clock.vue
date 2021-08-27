@@ -1050,9 +1050,12 @@ export default class Clock extends Vue implements ClockModel {
   mainBtn = START_PATH;
   current = 0;
 
+  /**
+   * When timer is up, this function needs to be invoked.
+   */
   forcePause(): void {
     this.setStatusToPause();
-    this.pauseTimer();
+    this.next();
   }
 
   private get currentTimer(): Timer {

@@ -1,16 +1,15 @@
 import * as Path from './digit-path';
-import * as workerTimers from 'worker-timers';
 import { ClockModel } from './models';
+import { AccurateInterval } from './accurate-interval';
 
 export class Timer {
-  private _centiSecond = 0;
   private _initialMinute: number;
   private _initialSecond: number;
   private _minute: number;
   private _second: number;
   private _fullPath: string[];
   private _path!: string;
-  private _timerId: number | undefined;
+  private intervalRunner!: AccurateInterval;
   isUp = false;
 
   constructor(
@@ -55,22 +54,27 @@ export class Timer {
 
   reset(): void {
     this.isUp = false;
-    this._centiSecond = 0;
     this._minute = this._initialMinute;
     this._second = this._initialSecond;
+    this.intervalRunner = new AccurateInterval(this.decrement.bind(this), 1000);
     this.updatePath();
   }
 
   start(): void {
-    if (!this._timerId) {
-      this._timerId = workerTimers.setInterval(this.decrement.bind(this), 10);
+    if (!this.intervalRunner) {
+      this.intervalRunner = new AccurateInterval(
+        this.decrement.bind(this),
+        1000
+      );
     }
+    this.intervalRunner.isRunning
+      ? this.intervalRunner.resume()
+      : this.intervalRunner.start();
   }
 
   pause(): void {
-    if (this._timerId) {
-      workerTimers.clearInterval(this._timerId);
-      this._timerId = undefined;
+    if (this.intervalRunner) {
+      this.intervalRunner.pause();
     }
   }
 
@@ -79,19 +83,13 @@ export class Timer {
   }
 
   decrement(): void {
-    if (this._centiSecond !== 0) {
-      this._centiSecond--;
-      return;
-    }
     if (this._second !== 0) {
       this._second--;
-      this._centiSecond = 99;
     } else if (this._minute !== 0) {
       this._minute--;
       this._second = 59;
-      this._centiSecond = 99;
     } else {
-      this.pause();
+      this.intervalRunner.stop();
       this.isUp = true;
       this.forcePause();
       return;
