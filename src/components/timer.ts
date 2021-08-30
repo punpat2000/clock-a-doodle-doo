@@ -37,7 +37,7 @@ export class Timer {
     this.updatePath();
   }
 
-  static createTripleTimer(clock: ClockModel): [Timer, Timer, Timer] {
+  public static createTripleTimer(clock: ClockModel): [Timer, Timer, Timer] {
     return [
       new Timer(clock.forcePause.bind(clock), TimerOptions.LEFT),
       new Timer(clock.forcePause.bind(clock), TimerOptions.MIDDLE),
@@ -45,7 +45,7 @@ export class Timer {
     ];
   }
 
-  static createDoubleTimer(clock: ClockModel): [Timer, Timer] {
+  public static createDoubleTimer(clock: ClockModel): [Timer, Timer] {
     return [
       new Timer(clock.forcePause.bind(clock), TimerOptions.LEFT),
       new Timer(clock.forcePause.bind(clock), TimerOptions.RIGHT),
@@ -61,19 +61,17 @@ export class Timer {
   }
 
   start(): void {
-    if (!this.intervalRunner) {
-      this.intervalRunner = new AccurateInterval(
-        this.decrement.bind(this),
-        1000
-      );
+    if (this.intervalRunner?.isStarted) {
+      this.intervalRunner.resume();
+      return;
     }
-    this.intervalRunner.isRunning
-      ? this.intervalRunner.resume()
-      : this.intervalRunner.start();
+    this.decrement();
+    this.intervalRunner = new AccurateInterval(this.decrement.bind(this), 1000);
+    this.intervalRunner.start();
   }
 
   pause(): void {
-    if (this.intervalRunner) {
+    if (this.intervalRunner?.isRunning) {
       this.intervalRunner.pause();
     }
   }

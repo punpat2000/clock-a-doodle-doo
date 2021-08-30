@@ -5,13 +5,18 @@ export class AccurateInterval {
   private timeout?: number;
   private dt!: number;
   isRunning = false;
+  isStarted = false;
   constructor(private func: () => void, private interval: number) {}
 
   start(): void {
     if (this.isRunning) {
-      throw new Error();
+      throw new Error('cannot start while running');
+    }
+    if (this.isStarted) {
+      throw new Error('cannot start if it is already started');
     }
     this.isRunning = true;
+    this.isStarted = true;
     this.expected = Date.now() + this.interval;
     this.timeout = workerTimers.setTimeout(this.step.bind(this), this.interval);
   }
@@ -26,20 +31,28 @@ export class AccurateInterval {
 
   resume(): void {
     // for debugging
-    if (!this.isRunning) {
-      throw new Error();
+    if (!this.isStarted) {
+      throw new Error('cannot resume if it is not started');
     }
-    this.expected = Date.now() + this.interval;
+    if (this.isRunning) {
+      throw new Error('cannot resume while running');
+    }
+    this.isRunning = true;
+    this.expected = Date.now() + this.dt;
     this.timeout = workerTimers.setTimeout(
       this.step.bind(this),
-      Math.max(0, this.interval - this.dt)
+      Math.max(0, this.dt)
     );
   }
 
   pause(): void {
     // record elapsed time
     this.dt = this.expected - Date.now();
-    this.stop();
+    this.isRunning = false;
+    if (this.timeout) {
+      workerTimers.clearTimeout(this.timeout);
+      this.timeout = undefined;
+    }
   }
 
   private step(): void {
@@ -53,6 +66,5 @@ export class AccurateInterval {
       this.step.bind(this),
       Math.max(0, this.interval - drift)
     );
-    console.log(this.timeout);
   }
 }
