@@ -84,6 +84,13 @@ export const nebula: Theme = {
   background: '#181F2A',
 };
 
+export const halloween: Theme = {
+  minor: '#FF9A00',
+  major: '#F75F1C',
+  base: '#000000',
+  background: '#000000',
+};
+
 const randomColor = (): string => {
   return '#' + ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, '0');
 };
@@ -109,6 +116,7 @@ export class ThemePicker {
     venus,
     luna,
     nebula,
+    halloween,
     random,
   ];
   private static current = 0;
