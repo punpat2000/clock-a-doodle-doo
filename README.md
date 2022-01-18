@@ -1,5 +1,7 @@
 # clock-a-doodle-doo
 
+## Designed by @lortornortornorchor
+
 ## Project setup
 ```
 yarn install
